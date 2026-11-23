@@ -27,6 +27,7 @@ def main():
     app.job_queue.run_daily(remidner,time(10,0,tzinfo=zoneinfo.ZoneInfo("Europe/Warsaw")),name="tenAM")
 
     app.job_queue.run_daily(remidner,time(18,0,tzinfo=zoneinfo.ZoneInfo("Europe/Warsaw")),name="sixPM")
+    app.run_polling()
 
 
 async def start(update,context):
@@ -50,7 +51,7 @@ async def deleteFirstReminder(update,context):
     if text == "ok":
         for i in context.job_queue.get_jobs_by_name("everyhour"):
             i.schedule_removal()
-            await update.message.reply_text("Uszanowanko")
+        await update.message.reply_text("Uszanowanko")
 
 
 

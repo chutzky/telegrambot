@@ -6,10 +6,15 @@ import dotenv
 import telegram
 from telegram.ext import(ApplicationBuilder,CommandHandler,MessageHandler,filters,ContextTypes)
 
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+)
 your_message="Tabletki"
 
 
 def main():
+    print("start",flush=True)
     dotenv.load_dotenv()
     TOKEN=os.getenv("BOT_TOKEN")
     CHAT_ID= os.getenv("CHAT_ID")
